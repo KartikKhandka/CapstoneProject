@@ -1,0 +1,373 @@
+-------------------------------------------------------
+  BLUESTOCK FINTECH -- DATA INGESTION REPORT
+-------------------------------------------------------
+
+
+
+  1. DATASET OVERVIEW
+
+
+   #  |  Dataset                |  File                          |    Rows  |  Cols  |      Size
+  ----+-------------------------+--------------------------------+----------+--------+----------
+   1  |  fund_master            |  01_fund_master.csv            |      40  |    15  |    6.7 KB
+   2  |  nav_history            |  02_nav_history.csv            |  46,000  |     3  |    1.2 MB
+   3  |  aum_by_fund_house      |  03_aum_by_fund_house.csv      |      90  |     5  |    3.9 KB
+   4  |  monthly_sip_inflows    |  04_monthly_sip_inflows.csv    |      48  |     6  |    1.6 KB
+   5  |  category_inflows       |  05_category_inflows.csv       |     144  |     3  |    3.6 KB
+   6  |  industry_folio_count   |  06_industry_folio_count.csv   |      21  |     6  |    0.8 KB
+   7  |  scheme_performance     |  07_scheme_performance.csv     |      40  |    19  |    6.4 KB
+   8  |  investor_transactions  |  08_investor_transactions.csv  |  32,778  |    13  |    3.0 MB
+   9  |  portfolio_holdings     |  09_portfolio_holdings.csv     |     322  |     8  |   23.3 KB
+  10  |  benchmark_indices      |  10_benchmark_indices.csv      |   8,050  |     3  |  245.1 KB
+
+  Total Records: 87,533
+
+--------------------------------------------------------------------------------
+  2. SCHEMA DETAILS (.shape, .dtypes, .head)
+--------------------------------------------------------------------------------
+
+  --- 01_fund_master.csv ---
+  Shape: 40 rows x 15 columns
+
+  Column              |  Dtype    |  Nulls
+  --------------------+-----------+-------
+  amfi_code           |  int64    |      0
+  fund_house          |  object   |      0
+  scheme_name         |  object   |      0
+  category            |  object   |      0
+  sub_category        |  object   |      0
+  plan                |  object   |      0
+  launch_date         |  object   |      0
+  benchmark           |  object   |      0
+  expense_ratio_pct   |  float64  |      0
+  exit_load_pct       |  float64  |      0
+  min_sip_amount      |  int64    |      0
+  min_lumpsum_amount  |  int64    |      0
+  fund_manager        |  object   |      0
+  risk_category       |  object   |      0
+  sebi_category_code  |  object   |      0
+
+  First 3 rows:
+     amfi_code      fund_house                         scheme_name category sub_category    plan launch_date            benchmark  expense_ratio_pct  exit_load_pct  min_sip_amount  min_lumpsum_amount  fund_manager risk_category sebi_category_code
+        119551 SBI Mutual Fund SBI Bluechip Fund - Regular Plan...   Equity    Large Cap Regular  2006-02-14        NIFTY 100 TRI               1.54            1.0             500                1000 Sohini Andani      Moderate               EC01
+        119552 SBI Mutual Fund SBI Bluechip Fund - Direct Plan ...   Equity    Large Cap  Direct  2013-01-01        NIFTY 100 TRI               0.66            1.0             500                1000 Sohini Andani      Moderate               EC01
+        119598 SBI Mutual Fund SBI Small Cap Fund - Regular Pla...   Equity    Small Cap Regular  2009-09-09 BSE 250 SmallCap TRI               1.43            1.0             500                1000 R. Srinivasan     Very High               EC03
+
+
+  --- 02_nav_history.csv ---
+  Shape: 46,000 rows x 3 columns
+
+  Column     |  Dtype    |  Nulls
+  -----------+-----------+-------
+  amfi_code  |  int64    |      0
+  date       |  object   |      0
+  nav        |  float64  |      0
+
+  First 3 rows:
+     amfi_code       date     nav
+        119551 2022-01-03 54.3856
+        119551 2022-01-04 54.3474
+        119551 2022-01-05 54.6869
+
+
+  --- 03_aum_by_fund_house.csv ---
+  Shape: 90 rows x 5 columns
+
+  Column          |  Dtype    |  Nulls
+  ----------------+-----------+-------
+  date            |  object   |      0
+  fund_house      |  object   |      0
+  aum_lakh_crore  |  float64  |      0
+  aum_crore       |  int64    |      0
+  num_schemes     |  int64    |      0
+
+  First 3 rows:
+          date          fund_house  aum_lakh_crore  aum_crore  num_schemes
+    2022-03-31     SBI Mutual Fund            6.05     605000          186
+    2022-03-31 ICICI Prudential MF            4.65     465000          216
+    2022-03-31    HDFC Mutual Fund            4.35     435000          195
+
+
+  --- 04_monthly_sip_inflows.csv ---
+  Shape: 48 rows x 6 columns
+
+  Column                     |  Dtype    |       Nulls
+  ---------------------------+-----------+------------
+  month                      |  object   |           0
+  sip_inflow_crore           |  int64    |           0
+  active_sip_accounts_crore  |  float64  |           0
+  new_sip_accounts_lakh      |  float64  |           0
+  sip_aum_lakh_crore         |  float64  |           0
+  yoy_growth_pct             |  float64  |  12 (25.0%)
+
+  First 3 rows:
+      month  sip_inflow_crore  active_sip_accounts_crore  new_sip_accounts_lakh  sip_aum_lakh_crore  yoy_growth_pct
+    2022-01             11517                       4.91                    9.1                4.80             NaN
+    2022-02             11438                       4.93                    8.2                4.85             NaN
+    2022-03             12328                       5.09                   10.5                5.01             NaN
+
+
+  --- 05_category_inflows.csv ---
+  Shape: 144 rows x 3 columns
+
+  Column            |  Dtype    |  Nulls
+  ------------------+-----------+-------
+  month             |  object   |      0
+  category          |  object   |      0
+  net_inflow_crore  |  float64  |      0
+
+  First 3 rows:
+      month  category  net_inflow_crore
+    2024-04 Large Cap            2413.0
+    2024-04   Mid Cap            3897.0
+    2024-04 Small Cap            3533.0
+
+
+  --- 06_industry_folio_count.csv ---
+  Shape: 21 rows x 6 columns
+
+  Column               |  Dtype    |  Nulls
+  ---------------------+-----------+-------
+  month                |  object   |      0
+  total_folios_crore   |  float64  |      0
+  equity_folios_crore  |  float64  |      0
+  debt_folios_crore    |  float64  |      0
+  hybrid_folios_crore  |  float64  |      0
+  others_folios_crore  |  float64  |      0
+
+  First 3 rows:
+      month  total_folios_crore  equity_folios_crore  debt_folios_crore  hybrid_folios_crore  others_folios_crore
+    2022-01               13.26                 9.28               1.86                 0.80                 1.33
+    2022-04               13.91                 9.74               1.95                 0.83                 1.39
+    2022-07               13.85                 9.69               1.94                 0.83                 1.38
+
+
+  --- 07_scheme_performance.csv ---
+  Shape: 40 rows x 19 columns
+
+  Column              |  Dtype    |  Nulls
+  --------------------+-----------+-------
+  amfi_code           |  int64    |      0
+  scheme_name         |  object   |      0
+  fund_house          |  object   |      0
+  category            |  object   |      0
+  plan                |  object   |      0
+  return_1yr_pct      |  float64  |      0
+  return_3yr_pct      |  float64  |      0
+  return_5yr_pct      |  float64  |      0
+  benchmark_3yr_pct   |  float64  |      0
+  alpha               |  float64  |      0
+  beta                |  float64  |      0
+  sharpe_ratio        |  float64  |      0
+  sortino_ratio       |  float64  |      0
+  std_dev_ann_pct     |  float64  |      0
+  max_drawdown_pct    |  float64  |      0
+  aum_crore           |  int64    |      0
+  expense_ratio_pct   |  float64  |      0
+  morningstar_rating  |  int64    |      0
+  risk_grade          |  object   |      0
+
+  First 3 rows:
+     amfi_code                         scheme_name      fund_house  category    plan  return_1yr_pct  return_3yr_pct  return_5yr_pct  benchmark_3yr_pct  alpha  beta  sharpe_ratio  sortino_ratio  std_dev_ann_pct  max_drawdown_pct  aum_crore  expense_ratio_pct  morningstar_rating risk_grade
+        119551 SBI Bluechip Fund - Regular Plan... SBI Mutual Fund Large Cap Regular           12.42           12.36           14.45              11.49   0.87  0.89          0.88           1.29             14.0            -21.70      14288               1.54                   4   Moderate
+        119552 SBI Bluechip Fund - Direct Plan ... SBI Mutual Fund Large Cap  Direct           15.25           11.30           14.23               9.52   1.78  0.87          0.81           1.29             14.0            -24.43       1231               0.66                   3   Moderate
+        119598 SBI Small Cap Fund - Regular Pla... SBI Mutual Fund Small Cap Regular           24.56           23.39           20.67              22.16   1.23  0.89          0.94           1.35             25.0            -13.35      19259               1.43                   5  Very High
+
+
+  --- 08_investor_transactions.csv ---
+  Shape: 32,778 rows x 13 columns
+
+  Column              |  Dtype    |  Nulls
+  --------------------+-----------+-------
+  investor_id         |  object   |      0
+  transaction_date    |  object   |      0
+  amfi_code           |  int64    |      0
+  transaction_type    |  object   |      0
+  amount_inr          |  int64    |      0
+  state               |  object   |      0
+  city                |  object   |      0
+  city_tier           |  object   |      0
+  age_group           |  object   |      0
+  gender              |  object   |      0
+  annual_income_lakh  |  float64  |      0
+  payment_mode        |  object   |      0
+  kyc_status          |  object   |      0
+
+  First 3 rows:
+    investor_id transaction_date  amfi_code transaction_type  amount_inr     state      city city_tier age_group gender  annual_income_lakh payment_mode kyc_status
+      INV003054       2024-01-01     119092              SIP        1834 Telangana Hyderabad       T30       56+ Female                77.1          UPI   Verified
+      INV002952       2024-01-01     148567       Redemption      392882    Punjab  Amritsar       B30     18-25   Male                 7.1       Cheque   Verified
+      INV003420       2024-01-01     118636              SIP         912   Haryana Faridabad       B30     36-45   Male                47.2      Mandate   Verified
+
+
+  --- 09_portfolio_holdings.csv ---
+  Shape: 322 rows x 8 columns
+
+  Column             |  Dtype    |  Nulls
+  -------------------+-----------+-------
+  amfi_code          |  int64    |      0
+  stock_symbol       |  object   |      0
+  stock_name         |  object   |      0
+  sector             |  object   |      0
+  weight_pct         |  float64  |      0
+  market_value_cr    |  float64  |      0
+  current_price_inr  |  float64  |      0
+  portfolio_date     |  object   |      0
+
+  First 3 rows:
+     amfi_code stock_symbol             stock_name      sector  weight_pct  market_value_cr  current_price_inr portfolio_date
+        119551    POWERGRID Power Grid Corporation   Utilities       13.85           737.09            6011.08     2025-12-31
+        119551     HDFCBANK          HDFC Bank Ltd     Banking       11.19            88.97            1074.65     2025-12-31
+        119551       GRASIM  Grasim Industries Ltd Diversified        9.90           208.45            5964.59     2025-12-31
+
+
+  --- 10_benchmark_indices.csv ---
+  Shape: 8,050 rows x 3 columns
+
+  Column       |  Dtype    |  Nulls
+  -------------+-----------+-------
+  date         |  object   |      0
+  index_name   |  object   |      0
+  close_value  |  float64  |      0
+
+  First 3 rows:
+          date index_name  close_value
+    2022-01-03    NIFTY50     17492.79
+    2022-01-04    NIFTY50     17689.64
+    2022-01-05    NIFTY50     17835.05
+
+
+  3. ANOMALY SCAN
+
+
+  2 anomalies detected:
+
+  #  |  Dataset              |  Issue                               |  Details                              |  Severity
+  ---+-----------------------+--------------------------------------+---------------------------------------+----------
+  1  |  monthly_sip_inflows  |  Missing values in 'yoy_growth_pct'  |  12 nulls (25.0%)                     |  MEDIUM  
+  2  |  monthly_sip_inflows  |  Spike in 'new_sip_accounts_lakh'    |  46.0 at 2025-04 (median: 9.2, 5.0x)  |  HIGH    
+
+
+  4. FUND MASTER EXPLORATION
+
+
+  Total Schemes: 40
+
+  4.1 Fund Houses:
+
+  Fund House                |  Schemes
+  --------------------------+---------
+  Aditya Birla Sun Life MF  |        3
+  Axis Mutual Fund          |        4
+  DSP Mutual Fund           |        3
+  HDFC Mutual Fund          |        5
+  ICICI Prudential MF       |        5
+  Kotak Mahindra MF         |        4
+  Mirae Asset MF            |        3
+  Nippon India MF           |        5
+  SBI Mutual Fund           |        5
+  UTI Mutual Fund           |        3
+
+  4.2 Categories & Sub-Categories:
+
+  Category  |  Sub-Category     |  Count
+  ----------+-------------------+-------
+  Debt      |  Liquid           |      3
+  Debt      |  Gilt             |      2
+  Debt      |  Short Duration   |      1
+  Equity    |  Large Cap        |     14
+  Equity    |  Mid Cap          |      7
+  Equity    |  Small Cap        |      6
+  Equity    |  Flexi Cap        |      2
+  Equity    |  Value            |      1
+  Equity    |  Index/ETF        |      1
+  Equity    |  Index            |      1
+  Equity    |  Large & Mid Cap  |      1
+  Equity    |  ELSS             |      1
+
+  4.3 Risk Distribution:
+
+  Risk Grade       |  Count  |  Pct  |  Distribution        
+  -----------------+---------+-------+----------------------
+  Low              |      6  |  15%  |  #######             
+  Moderate         |     16  |  40%  |  ####################
+  Moderately High  |      4  |  10%  |  #####               
+  High             |      8  |  20%  |  ##########          
+  Very High        |      6  |  15%  |  #######             
+
+  4.4 AMFI Scheme Code Structure:
+      Range       : 100016 to 149324
+      Digit length: [6]
+      Unique codes: 40 (out of 40 rows)
+
+  4.5 SEBI Category Code Mapping:
+
+  SEBI Code  |  Maps To                   
+  -----------+----------------------------
+  DC01       |  Liquid                    
+  DC02       |  Gilt, Short Duration      
+  EC01       |  Large Cap                 
+  EC02       |  Mid Cap                   
+  EC03       |  Small Cap                 
+  EC04       |  Flexi Cap, Large & Mid Cap
+  EC05       |  ELSS                      
+  EC06       |  Value                     
+  EI01       |  Index/ETF, Index          
+
+
+  5. AMFI CODE CROSS-VALIDATION
+
+
+  5.1 Fund Master vs NAV History:
+
+  Metric                |  Count
+  ----------------------+-------
+  Fund Master codes     |     40
+  NAV History codes     |     40
+  Matching codes        |     40
+  FM only (not in NAV)  |      0
+  NAV only (not in FM)  |      0
+
+  Result: [PASS] All fund_master codes found in nav_history
+
+  5.2 Cross-Dataset Validation:
+
+  Dataset                |  Common  |  Only FM  |  Only Dataset
+  -----------------------+----------+-----------+--------------
+  scheme_performance     |      40  |        0  |             0
+  investor_transactions  |      40  |        0  |             0
+  portfolio_holdings     |      34  |        6  |             0
+
+
+  6. DATA QUALITY SUMMARY
+
+
+  Dataset                |    Rows  |  Cols  |  Nulls  |  Null%  |  Dupes  |    Memory
+  -----------------------+----------+--------+---------+---------+---------+----------
+  fund_master            |      40  |    15  |      0  |  0.00%  |      0  |   25.9 KB
+  nav_history            |  46,000  |     3  |      0  |  0.00%  |      0  |    3.3 MB
+  aum_by_fund_house      |      90  |     5  |      0  |  0.00%  |      0  |   13.2 KB
+  monthly_sip_inflows    |      48  |     6  |     12  |  4.17%  |      0  |    4.6 KB
+  category_inflows       |     144  |     3  |      0  |  0.00%  |      0  |   17.3 KB
+  industry_folio_count   |      21  |     6  |      0  |  0.00%  |      0  |    2.1 KB
+  scheme_performance     |      40  |    19  |      0  |  0.00%  |      0  |   17.2 KB
+  investor_transactions  |  32,778  |    13  |      0  |  0.00%  |      0  |   18.2 MB
+  portfolio_holdings     |     322  |     8  |      0  |  0.00%  |      0  |   85.1 KB
+  benchmark_indices      |   8,050  |     3  |      0  |  0.00%  |      0  |  995.1 KB
+
+  Total Memory: 22.6 MB
+
+
+  7. FINAL VERDICT
+
+
+  [PASS] 10 datasets loaded successfully
+  [PASS] 87,533 total records ingested
+  [PASS] AMFI code integrity: PASS
+  [WARN] Anomalies: 2 found
+  [PASS] Zero duplicate rows across all datasets
+
+================================================================================
+  END OF REPORT
+
+
