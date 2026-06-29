@@ -1,9 +1,6 @@
 """
 Bluestock Fintech — Day 1: Data Ingestion & Exploration
-=========================================================
-Loads all 10 CSV datasets from data/raw/, prints schema info
-(.shape, .dtypes, .head()), explores fund_master dimensions,
-validates AMFI codes across datasets, and outputs a data-quality summary.
+
 """
 
 import os
@@ -12,7 +9,7 @@ import pandas as pd
 import numpy as np
 from pathlib import Path
 
-# Fix Windows console encoding for Unicode output
+
 sys.stdout.reconfigure(encoding='utf-8', errors='replace')
 
 RAW_DIR = Path("dataset")
@@ -135,29 +132,29 @@ print("=" * 80)
 
 fm = dataframes["fund_master"]
 
-print(f"\n  📊 Total schemes: {len(fm)}")
-print(f"\n  🏢 Unique Fund Houses ({fm['fund_house'].nunique()}):")
+print(f"\n   Total schemes: {len(fm)}")
+print(f"\n  Unique Fund Houses ({fm['fund_house'].nunique()}):")
 for fh in sorted(fm["fund_house"].unique()):
     count = (fm["fund_house"] == fh).sum()
     print(f"      • {fh:<35} ({count} schemes)")
 
-print(f"\n  📁 Unique Categories ({fm['category'].nunique()}):")
+print(f"\n   Unique Categories ({fm['category'].nunique()}):")
 for cat in sorted(fm["category"].unique()):
     count = (fm["category"] == cat).sum()
     print(f"      • {cat:<25} ({count} schemes)")
 
-print(f"\n  📂 Unique Sub-Categories ({fm['sub_category'].nunique()}):")
+print(f"\n   Unique Sub-Categories ({fm['sub_category'].nunique()}):")
 for sub in sorted(fm["sub_category"].unique()):
     count = (fm["sub_category"] == sub).sum()
     print(f"      • {sub:<25} ({count} schemes)")
 
-print(f"\n  ⚠️  Risk Grades ({fm['risk_category'].nunique()}):")
+print(f"\n    Risk Grades ({fm['risk_category'].nunique()}):")
 for risk in sorted(fm["risk_category"].unique()):
     count = (fm["risk_category"] == risk).sum()
     print(f"      • {risk:<20} ({count} schemes)")
 
 # AMFI scheme code structure analysis
-print(f"\n  🔢 AMFI Code Structure:")
+print(f"\n   AMFI Code Structure:")
 codes = fm["amfi_code"]
 print(f"      Range      : {codes.min()} — {codes.max()}")
 print(f"      Digits     : {codes.astype(str).str.len().unique().tolist()}")

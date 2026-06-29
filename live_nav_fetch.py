@@ -1,16 +1,6 @@
 """
-Bluestock Fintech — Day 1: Live NAV Fetcher
-=============================================
-Fetches live NAV data from MFAPI.in for 6 key mutual fund schemes
-and saves each as a CSV in data/raw/.
+Live NAV Fetcher
 
-Schemes:
-  1. HDFC Top 100 Direct  (125497)
-  2. SBI Bluechip          (119551)
-  3. ICICI Bluechip         (120503)
-  4. Nippon Large Cap       (118632)
-  5. Axis Bluechip          (119092)
-  6. Kotak Bluechip         (120841)
 """
 
 import requests
@@ -19,7 +9,7 @@ from pathlib import Path
 import time
 import sys
 
-# Fix Windows console encoding for Unicode output
+
 sys.stdout.reconfigure(encoding='utf-8', errors='replace')
 
 

@@ -1,5 +1,5 @@
 """
-Day 2: Data Cleaning Pipeline
+Data Cleaning Pipeline
 
 """
 
