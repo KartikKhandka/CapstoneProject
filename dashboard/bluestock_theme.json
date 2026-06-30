@@ -1,0 +1,75 @@
+{
+    "name": "Bluestock Fintech",
+    "dataColors": [
+        "#4A3AFF",
+        "#7B61FF",
+        "#A78BFA",
+        "#10B981",
+        "#F59E0B",
+        "#EF4444",
+        "#0EA5E9",
+        "#6366F1",
+        "#EC4899",
+        "#14B8A6"
+    ],
+    "background": "#F1F0FB",
+    "foreground": "#1B1F3B",
+    "tableAccent": "#4A3AFF",
+    "visualStyles": {
+        "*": {
+            "*": {
+                "general": [{
+                    "responsive": true
+                }],
+                "title": [{
+                    "color": {"solid": {"color": "#1B1F3B"}},
+                    "fontSize": 14,
+                    "fontFamily": "Segoe UI Semibold",
+                    "titleWrap": true
+                }],
+                "labels": [{
+                    "color": {"solid": {"color": "#44446A"}},
+                    "fontSize": 11,
+                    "fontFamily": "Segoe UI"
+                }],
+                "categoryAxis": [{
+                    "labelColor": {"solid": {"color": "#44446A"}},
+                    "fontSize": 11
+                }],
+                "valueAxis": [{
+                    "labelColor": {"solid": {"color": "#44446A"}},
+                    "fontSize": 11,
+                    "gridlineColor": {"solid": {"color": "#E5E5F0"}},
+                    "gridlineStyle": 1,
+                    "gridlineShow": true
+                }],
+                "legend": [{
+                    "labelColor": {"solid": {"color": "#1B1F3B"}},
+                    "fontSize": 11,
+                    "fontFamily": "Segoe UI"
+                }]
+            }
+        },
+        "page": {
+            "*": {
+                "background": [{
+                    "color": {"solid": {"color": "#F1F0FB"}},
+                    "transparency": 0
+                }]
+            }
+        },
+        "card": {
+            "*": {
+                "labels": [{
+                    "color": {"solid": {"color": "#4A3AFF"}},
+                    "fontSize": 28,
+                    "fontFamily": "Segoe UI Bold"
+                }],
+                "categoryLabels": [{
+                    "color": {"solid": {"color": "#44446A"}},
+                    "fontSize": 12
+                }]
+            }
+        }
+    }
+}
